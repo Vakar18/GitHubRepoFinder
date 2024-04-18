@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom"; 
 import axios from "axios";
 import {
   Card,
@@ -65,18 +65,15 @@ function FollowersPage() {
             {followers.map((follower) => (
               <Grid item xs={12} sm={6} md={4} key={follower.id}>
                 <Card>
-                  <a
-                    href={follower.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  {/* Wrap CardMedia with Link */}
+                  <Link to={`/repositories/${follower.login}`}>
                     <CardMedia
                       component="img"
                       src={follower.avatar_url}
                       alt={follower.login}
                       sx={{ height: 200 }}
                     />
-                  </a>
+                  </Link>
                   <CardContent>
                     <Typography
                       variant="h6"
